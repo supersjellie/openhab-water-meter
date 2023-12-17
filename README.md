@@ -1,12 +1,12 @@
 # openHAB-water-meter (pulse sensor)
 
 ## Summary
-Setup for using a watermeter in openHAB using a pulsecounter constructed with a Hall-effect proximity sensor. It's made with a few components (can be used independant). A Arduino sketch for the pulsecounting posting results over a serial USB connection. A nodeJS progam that reads this and creates an JSON webservice that openHAB can use. Last a thing and widget to make this easier.
+Setup for using a watermeter in openHAB using a pulsecounter constructed with a Hall-effect proximity sensor. It's made with a few components (can be used independant). A Arduino sketch for the pulsecounting posting results over a serial USB connection. A nodeJS progam that reads this and creates an JSON webservice that openHAB can (optionally) use. Last a thing and widget to make this easier.
 
 ![example 1](images-wiki/watermeter.png?raw=true)
 
 Features
-1. Measures total,current, recent water usage based on one of half liter pulses and display it in an openHAB widget (optimized for tiled dashboard)
+1. Measures total,current, recent water usage based on one of half liter pulses and (optionally) display it in an openHAB widget (optimized for tiled dashboard)
 2. http://hostname:3002/water 
 	* Water meter readings in JSON format of total, current flow, last useage and other statistics
 3. http://hostname:3002/total/number
@@ -29,12 +29,16 @@ Using the [issues](https://github.com/Supersjellie/openhab-water-meter/issues) i
 2. Own a water meter with magnetic wheel :grin:
 3. Buy and create arduino hardware for pulse counting (check more information link below).
 4. Install [nodeJS](https://nodejs.org/en) on your raspberry.
-5. Adapt configuration to your needs (top of NodeJS code).
-4. Install in openhab the http binding, see [documentation](https://www.openhab.org/addons/bindings/http/)
+5. Install in openhab the http binding, see [documentation](https://www.openhab.org/addons/bindings/http/)
 6. Install in openhab the jsonpath transformation, see [documentation](https://www.openhab.org/addons/transformations/jsonpath/)
 7. Install in openHAB the javascript scriping engine, see [documentation](https://www.openhab.org/addons/automation/jsscripting/)
 
 More information, check my dutch [homepage](https://www.netsjel.nl/watermeter-1.html). English? [Google Translate](https://www-netsjel-nl.translate.goog/watermeter-1.html?_x_tr_sl=nl&_x_tr_tl=en&_x_tr_hl=nl&_x_tr_pto=wapp) will be your friend.
+
+## Flash Arduino Program
+1. Connect the hall proximity sensor to the arduino (manual on my [website](https://www.netsjel.nl/watermeter-1.html). English? [Google Translation](https://www-netsjel-nl.translate.goog/watermeter-1.html?_x_tr_sl=nl&_x_tr_tl=en&_x_tr_hl=nl&_x_tr_pto=wapp)
+2. Assuming you're familiair with Arduino IDE. Copy the watermeter.ino program in the github arduino folder and flash it on the arduino
+3. If not, usefull links to the how-to on previous link.
 
 ## Deploy nodeJS progam
 1. Assuming you're familair with nodeJS. Copy the water.js program to your program folder.
