@@ -1,0 +1,62 @@
+UID: http:url:watermeter
+label: water meter
+thingTypeUID: http:url
+configuration:
+  authMode: BASIC
+  ignoreSSLErrors: false
+  baseURL: http://hal9000:3002/water
+  delay: 0
+  stateMethod: GET
+  refresh: 10
+  commandMethod: GET
+  contentType: application/json
+  timeout: 3000
+  bufferSize: 2048
+channels:
+  - id: cpu
+    channelTypeUID: http:number
+    label: cpu
+    description: null
+    configuration:
+      mode: READONLY
+      stateTransformation: JSONPATH:$.cpu
+  - id: total
+    channelTypeUID: http:number
+    label: total
+    description: null
+    configuration:
+      mode: READONLY
+      stateTransformation: JSONPATH:$.total
+      unit: l
+  - id: lastPeriod
+    channelTypeUID: http:number
+    label: lastPeriod
+    description: null
+    configuration:
+      mode: READONLY
+      stateTransformation: JSONPATH:$.lastPeriod
+      unit: l
+  - id: flow
+    channelTypeUID: http:number
+    label: flow
+    description: null
+    configuration:
+      mode: READONLY
+      stateTransformation: JSONPATH:$.flow
+      unit: ml/min
+  - id: lastTotal
+    channelTypeUID: http:number
+    label: lastTotal
+    description: null
+    configuration:
+      mode: READONLY
+      stateTransformation: JSONPATH:$.lastTotal
+      unit: l
+  - id: lastMinute
+    channelTypeUID: http:number
+    label: lastMinute
+    description: null
+    configuration:
+      mode: READONLY
+      stateTransformation: JSONPATH:$.minTotal
+      unit: l/min

@@ -1,0 +1,86 @@
+uid: widget_water
+tags: []
+props:
+  parameters:
+    - context: item
+      description: Item with waterflow
+      label: Water Flow
+      name: water
+      required: false
+      type: TEXT
+    - context: item
+      description: Item with last total used
+      label: Last used
+      name: last
+      required: false
+      type: TEXT
+  parameterGroups: []
+timestamp: Jan 24, 2023, 5:25:31 PM
+component: f7-card
+config: {}
+slots:
+  default:
+    - component: f7-badge
+      config:
+        bgColor: rgba(0,0,0,0.0)
+        style:
+          background-image: url(/static/kraan.png)
+          background-size: 100px
+          border-radius: 12px
+          height: 100px
+          left: 0px
+          position: absolute
+          top: 0px
+          width: 100px
+        visible: =Number.parseFloat(items[props.water].state)==0
+    - component: f7-badge
+      config:
+        bgColor: rgba(0,0,0,0.0)
+        style:
+          background-image: url(/static/kraan-on.png)
+          background-size: 100px
+          border-radius: 12px
+          height: 100px
+          left: 0px
+          position: absolute
+          top: 0px
+          width: 100px
+        visible: = Number.parseFloat(items[props.water].state)!=0
+    - component: f7-badge
+      config:
+        bgColor: rgba(0,0,0,0.0)
+        style:
+          background-image: url(/static/bucket.png)
+          background-size: 40px
+          border-radius: 12px
+          height: 59px
+          left: 50px
+          position: absolute
+          top: 82px
+          width: 40px
+    - component: Label
+      config:
+        style:
+          --f7-card-bg-color: rgba(0,0,0,0.0)
+          --f7-card-box-shadow: none
+          color: black
+          font-size: 13px
+          left: 13px
+          position: absolute
+          text-align: center
+          top: 39px
+          width: 54px
+        text: = (Number.parseFloat(items[props.water].state)/1000).toFixed(1)+"l"
+    - component: Label
+      config:
+        style:
+          --f7-card-bg-color: rgba(0,0,0,0.0)
+          --f7-card-box-shadow: none
+          color: black
+          font-size: 13px
+          left: 43px
+          position: absolute
+          text-align: center
+          top: 108px
+          width: 54px
+        text: = (Number.parseFloat(items[props.last].state)).toFixed(1)+"l"
